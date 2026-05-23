@@ -1,0 +1,28 @@
+<ActionBar class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+
+  <GridLayout columns="50, *">
+
+    <Label
+      class="fas"
+      text="&#xf0c9;"
+      (tap)="onDrawerButtonTap()">
+    </Label>
+
+    <Label
+      class="action-bar-title"
+      text="Detalle"
+      col="1">
+    </Label>
+
+  </GridLayout>
+</ActionBar>
+
+<StackLayout class="page__content">
+
+  <Label
+    class="h1"
+    [text]="'Película: ' + movieName">
+  </Label>
+
+</StackLayout>

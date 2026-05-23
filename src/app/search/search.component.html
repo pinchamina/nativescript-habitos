@@ -1,0 +1,90 @@
+<ActionBar class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+
+  <GridLayout columns="50, *">
+
+    <Label
+      class="fas"
+      text="&#xf0c9;"
+      (tap)="onDrawerButtonTap()">
+    </Label>
+
+    <Label
+      class="action-bar-title"
+      text="Search"
+      col="1">
+    </Label>
+
+  </GridLayout>
+</ActionBar>
+
+<StackLayout class="page__content">
+
+  <TextField
+    hint="Buscar película"
+    [(ngModel)]="searchText"
+    appMinLength
+    (blur)="validateText()">
+</TextField>
+
+<Label
+  *ngIf="showError"
+  text="Mínimo 3 caracteres"
+  color="red"
+  marginLeft="10">
+</Label>
+
+  <PullToRefresh
+    (refresh)="refreshList($event)">
+
+    <ListView
+    [items]="movies"
+    height="500">
+
+      <ng-template let-item="item">
+
+        <FlexboxLayout
+          flexDirection="row"
+          justifyContent="space-around"
+          alignItems="center"
+          padding="15">
+
+          <StackLayout>
+
+            <Label
+              [text]="item.name"
+              class="h2">
+            </Label>
+
+            <Label
+              [text]="item.category">
+            </Label>
+
+          </StackLayout>
+
+          <Button
+            text="Detalle"
+            (tap)="goDetail(item)">
+          </Button>
+
+          <Label
+            text="⚙"
+            fontSize="25"
+            (tap)="selectCategory(item)">
+          </Label>
+
+        </FlexboxLayout>
+
+      </ng-template>
+
+    </ListView>
+
+  </PullToRefresh>
+
+  <Button
+    text="Double Tap"
+    class="animated-btn"
+    (doubleTap)="doubleTap()">
+  </Button>
+
+</StackLayout>

@@ -1,0 +1,24 @@
+<ActionBar title="Habitos"></ActionBar>
+
+<StackLayout>
+
+    <Label
+        text="Lista de Habitos"
+        class="titulo">
+    </Label>
+
+    <Label
+        [text]="plataforma"
+        class="android-label">
+    </Label>
+
+    <StackLayout *ngFor="let habito of habitos">
+
+        <Label
+            [text]="habito"
+            class="item">
+        </Label>
+
+    </StackLayout>
+
+</StackLayout>
